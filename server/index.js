@@ -24,12 +24,6 @@ app.use(express.static(path.join(__dirname, "..", "build")));
 // informs Express.js to serve all the files from public folder
 app.use(express.static("public"));
 
-// TO DO: CHECK TO SEE IF THIS WORKS:
-// in order to use routing:
-// app.use((req, res, next) => {
-//   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-// });
-
 // Implement users route
 app.use('/api/magic', apiRoutes)
 
