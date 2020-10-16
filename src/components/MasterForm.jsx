@@ -42,7 +42,7 @@ export const MasterForm = () => {
         if (currentStep === 'CONTACT') {
             axios({
                 method: 'post',
-                url: 'http://localhost:8000/api/magic/checkForUser',
+                url: '/api/magic/checkForUser',
                 data: userInfo
             })
             .then( res => {
@@ -69,7 +69,7 @@ export const MasterForm = () => {
         e.preventDefault();
             axios({
                 method: 'post',
-                url: 'http://localhost:8000/api/magic',
+                url: '/api/magic',
                 data: userInfo
             })
             .then( res => {
