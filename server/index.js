@@ -1,6 +1,10 @@
 const express = require("express");
-const app = express(); // create express app
 const path = require("path");
+
+const PORT = process.env.PORT || 8000
+
+
+const app = express(); // create express app
 
 // add middlewear:
 //the build folder will be created inside react-app folder, we are creating a path for the build folder located outside the server folder.
@@ -13,7 +17,7 @@ app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 
-// start express server on port 7000
-app.listen(7000, () => {
-  console.log("server started on port 7000");
-});
+// Start express app
+app.listen(PORT, function() {
+  console.log(`Server is running on: ${PORT}`)
+})
