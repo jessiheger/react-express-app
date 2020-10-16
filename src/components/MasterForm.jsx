@@ -121,7 +121,9 @@ export const MasterForm = () => {
   MasterForm.styles = {
       container: {
           width: '100%',
-          minWidth: '400px',
+          maxWidth: '400px',
+          fontFamily: 'larssiet, "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, Verdana, sans-serif',
+
       },
       form: {
         display: 'flex',
