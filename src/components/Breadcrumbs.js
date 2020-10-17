@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart, faAddressBook, faCreditCard, faClipboardCheck, faStar, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { breadcrumbIcons } from '../utils/icons';
 
 export const Breadcrumbs = props => {
     const { currentStep } = props;
@@ -13,16 +14,16 @@ export const Breadcrumbs = props => {
     return (
         <div style={Breadcrumbs.styles.container}>
             <div style={Breadcrumbs.styles.innerContainer}>
-          <FontAwesomeIcon icon={faShoppingCart} size={getSize('QUANTITY')}/>
-          <FontAwesomeIcon icon={faChevronRight} size="xs"/>
-          <FontAwesomeIcon icon={faAddressBook} size={getSize('CONTACT')}/>
-          <FontAwesomeIcon icon={faChevronRight} size="xs"/>
-          <FontAwesomeIcon icon={faCreditCard} size={getSize('BILLING')}/>
-          <FontAwesomeIcon icon={faChevronRight} size="xs"/>
-          <FontAwesomeIcon icon={faClipboardCheck} size={getSize('REVIEW_ORDER')}/>
-          <FontAwesomeIcon icon={faChevronRight} size="xs"/>
-          <FontAwesomeIcon icon={faStar} size={getSize('CONFIRMATION')}/>
-          </div>
+                {breadcrumbIcons.map( (icon) => {
+                    return (
+                        <div style={Breadcrumbs.styles.iconAndChevron}>
+                            <FontAwesomeIcon icon={icon.iconName} size={getSize(icon.stepName)} />
+                            {icon.hasNextStep ? <div style={{paddingLeft: '2rem'}}><FontAwesomeIcon icon={faChevronRight} size="xs"/></div> : <div></div>}
+                        </div>
+                    )
+                })
+                }
+           </div>
           </div>
     )
 }
@@ -43,6 +44,10 @@ Breadcrumbs.styles = {
         width: '90%',
         display: 'flex',
         justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    iconAndChevron: {
+        display: 'flex',
         alignItems: 'center',
     }
 }
