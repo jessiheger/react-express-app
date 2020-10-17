@@ -14,7 +14,6 @@ export const MasterForm = () => {
     const [ currentStep, setCurrentStep ] = useState("QUANTITY");
     const [ formFields, setFormFields ] = useState([]);
     const [ errors, setErrors ] = useState([]);
-    const [ axiosResponse, setAxiosResponse ] = useState(null);
     const addressFields = ["street1", "street2", "city", "state", "zip"]
     const paymentFields = ["ccNum", "exp"];
 
@@ -100,8 +99,6 @@ export const MasterForm = () => {
             data: payload
         })
         .then( res => {
-            setAxiosResponse(res);
-            // TO DO: PREVENT SETTING NEXT STEP UNTIL AFTER RECEIVING RESPONSE
             setCurrentStep('CONFIRMATION');
         }).catch(error => {
             console.log(error);

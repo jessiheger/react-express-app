@@ -34,18 +34,18 @@ export const Confirmation = props => {
                 <div style={{margin: '1rem'}}>Credit Card: -{userInfo.ccNum.substr(userInfo.ccNum.length - 4)}</div>
                 <div style={{margin: '1rem'}}>Exp: {userInfo.exp}</div>
             </div> 
-            
-            : <div></div>
-
         </div>
+
         : currentStep === 'ERROR' ? 
         <div>
             <h2>There was an error processing your order. Please try again.</h2>            
         </div>
+
         : currentStep === 'DUPLICATE_USER' ?
         <div>
             <h2>So sorry! It looks like a user with the same name and contact information has already submitted an order.</h2>
         </div>
+        
         : <div></div>
     )
 }
