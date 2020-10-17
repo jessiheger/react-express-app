@@ -60,7 +60,7 @@ export const ContactFields = [
         name: 'zip',
         placeholder: '12345',
         required: true,
-        validation: /^[0-9]+/i,
+        validation: /(^\d{5}$)/,
         message: 'Invalid zipcode. Please enter 5-digit zipcode.',
     },
     {
@@ -68,7 +68,7 @@ export const ContactFields = [
         name: 'phone',
         placeholder: '111-222-3333',
         required: true,
-        validation: /^\d{3}-\d{3}-\d{4}$/,
+        validation: /(^\d{3}-\d{3}-\d{4}$)/,
         message: 'Invalid phone number. Please enter as ###-###-####.',
     }
 ];
@@ -79,7 +79,7 @@ export const BillingFields = [
         name: 'ccNum',
         placeholder: 'XXXXXXXX',
         required: true,
-        validation: /^[0-9]+/i,
+        validation: /^[0-9]+/,
         message: 'Invalid card number. Please use only numbers.'
     },
     {
@@ -87,7 +87,7 @@ export const BillingFields = [
         name: 'exp',
         placeholder: '03/25',
         required: true,
-        validation: /^(0[1-9]|1[0-2])\/?([0-9]{2})$/i,
+        validation: /^((0[1-9])|(1[0-2]))\/(\d{2})$/,
         message: 'Invalid expiration date. Please enter as MM/YY.'
 
     }

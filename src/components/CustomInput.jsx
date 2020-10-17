@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useRef } from "react";
 import PropTypes from 'prop-types';
-import './styles.css';
 
 
 export const CustomInput = (props) => {
@@ -66,7 +65,7 @@ export const CustomInput = (props) => {
       fontSize: '1rem',
       lineHeight: 1.75,
       appearance: 'none',
-      background: 'rgb(255, 255, 255)',
+      backgroundColor: 'rgb(255, 255, 255)',
       border: '1px solid rgb(237, 237, 240)',
       borderRadius: '0.25rem',
       color: 'rgb(82, 77, 110)',

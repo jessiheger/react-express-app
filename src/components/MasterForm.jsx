@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-import { BillingFields, ContactFields } from './formFields';
+import { BillingFields, ContactFields } from '../utils/formFields';
 import { Breadcrumbs } from './Breadcrumbs';
 import { Confirmation } from './Confirmation';
 import { DynamicForm } from "./DynamicForm";
