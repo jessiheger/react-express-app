@@ -15,6 +15,8 @@ export const MasterForm = () => {
     const [ formFields, setFormFields ] = useState([]);
     const [ axiosResponse, setAxiosResponse ] = useState({})
     const [ errors, setErrors ] = useState([]);
+    const addressFields = ["street1", "street2", "city", "state", "zip"]
+    const paymentFields = ["ccNum", "exp"];
 
     useEffect (() => {
         switch (currentStep) {
@@ -65,21 +67,47 @@ export const MasterForm = () => {
         setUserInfo(newState);
     };
 
+    const transformPayload = () => {
+        let payload = {};
+
+        const address = addressFields.reduce((acc, field) => {
+            acc[field] = userInfo[field]
+            return acc;
+        }, {});
+        payload["address"] = address;
+
+        const payment = paymentFields.reduce((acc, field) => {
+            acc[field] = userInfo[field];
+            return acc;
+        }, {});
+        payload["payment"] = payment;
+
+        Object.keys(userInfo).map(key => {
+            if ( !addressFields.includes(key) && !paymentFields.includes(key)) {
+                payload[key] = userInfo[key]
+            }
+        });
+
+          return payload;
+    }
+
     const submitNewOrder = (e) => {
         e.preventDefault();
-            axios({
-                method: 'post',
-                url: '/api/magic',
-                data: userInfo
-            })
-            .then( res => {
-                setAxiosResponse(res);
-                // TO DO: PREVENT SETTING NEXT STEP UNTIL AFTER RECEIVING RESPONSE
-                setCurrentStep('CONFIRMATION');
-            }).catch(error => {
-                console.log(error);
-                setCurrentStep('ERROR');
-            });
+        const payload = transformPayload();
+
+        axios({
+            method: 'post',
+            url: '/api/magic',
+            data: payload
+        })
+        .then( res => {
+            setAxiosResponse(res);
+            // TO DO: PREVENT SETTING NEXT STEP UNTIL AFTER RECEIVING RESPONSE
+            setCurrentStep('CONFIRMATION');
+        }).catch(error => {
+            console.log(error);
+            setCurrentStep('ERROR');
+        });
     };
 
     const removeFromErrorList = (validFieldName) => {
