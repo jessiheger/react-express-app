@@ -23,7 +23,6 @@ export const CustomInput = (props) => {
             addToOrder(name, fieldValue);
           }
   }
-  
     return (
       <div style={CustomInput.styles.container} >
         <label style={CustomInput.styles.label} >{label} {required ? '*' : ''}</label>
@@ -36,7 +35,7 @@ export const CustomInput = (props) => {
           onChange={e => handleChange(e.target.value)}
           onBlur={() => handleUserStateChange(ref)}
         ></input>
-        <div style={{color: 'red'}}>{error}</div>
+        <div style={CustomInput.styles.errorMessage}>{error}</div>
       </div>
     )
   }
@@ -72,5 +71,10 @@ export const CustomInput = (props) => {
       fontFamily: 'larssiet, "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, Verdana, sans-serif',
       outline: 'none',
       padding: '10px 1.5rem 10px .5rem',
+    },
+    errorMessage: {
+      color: 'red',
+      margin: '5px 0px 0px 10px',
+      fontSize: '14px'
     }
   }
