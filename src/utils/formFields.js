@@ -44,7 +44,7 @@ export const ContactFields = [
         name: 'city',
         placeholder: 'Los Angeles',
         required: true,
-        validation: /^[A-Za-z-( )]+/i,
+        validation: /^[a-z -]+$/i, 
         message: 'Please use only letters, spaces, and dashes (-).',
     },
     {
