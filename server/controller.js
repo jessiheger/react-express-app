@@ -1,6 +1,6 @@
 const knex = require('./db')
 
-// Retrieve all users
+// Get all users
 exports.getUsers = async (req, res) => {
   knex
     .select('*')
@@ -14,6 +14,7 @@ exports.getUsers = async (req, res) => {
     })
 }
 
+// Get single user by contact info
 exports.getByContactInfo = async (req, res) => {
   knex('users')
     .where({
@@ -40,7 +41,7 @@ exports.getByContactInfo = async (req, res) => {
     })
 }
 
-// Retrieve single user
+// Get single user by id
 exports.getByUserId = async (req, res) => {
   knex('users')
     .where('id', req.params.id)
@@ -82,9 +83,8 @@ exports.createUser = async (req, res) => {
     })
 }
 
+// Update fulfilled status of order by user id
 exports.updateFulfilled = async (req, res) => {
-    // const id = req.body.id;
-    // const fulfilled = req.body.fulfilled
   knex('users')
     .where('id', req.body.id)
     .update({fulfilled: `${req.body.fulfilled}`}, ['id', 'fulfilled'])
@@ -99,9 +99,8 @@ exports.updateFulfilled = async (req, res) => {
 }
 
 
-// Remove specific user
+// Delete specific user by id
 exports.deleteUser = async (req, res) => {
-  // const id = req.params.id;
   knex('users')
     .where('id', req.params.id)
     .del()
@@ -115,7 +114,7 @@ exports.deleteUser = async (req, res) => {
     })
 }
 
-// Remove all users on the list
+// Delete all users from the database
 exports.resetUsers = async (req, res) => {
   knex
     .select('*')

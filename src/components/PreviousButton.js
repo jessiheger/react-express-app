@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 const setPrev = (currentStep) => {
     switch ( currentStep ) {
+        case 'REVIEW_ORDER':
+            return 'BILLING';
         case 'BILLING':
             return 'CONTACT';
         case 'CONTACT':
@@ -18,7 +20,7 @@ const setPrev = (currentStep) => {
 export const PreviousButton = props => {
     const { currentStep, setPreviousStep } = props;
     const previousStep = setPrev(currentStep);
-    const buttonText = currentStep === 'BILLING' || currentStep === 'CONTACT' ? 'Previous' : 'Submit New Order';
+    const buttonText = currentStep === 'CONFIRMATION' ? 'Submit New Order' : 'Previous';
 
     if (currentStep !== 'QUANTITY') {
         return (

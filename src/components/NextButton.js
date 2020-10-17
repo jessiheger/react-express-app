@@ -8,9 +8,11 @@ const setNext = (currentStep) => {
         case 'CONTACT':
             return 'BILLING';
         case 'BILLING':
+            return 'REVIEW_ORDER';
+        case 'REVIEW_ORDER':
             return 'CONFIRMATION';
         default:
-            return 'CONTACT';
+            return 'QUANTITY';
     }
 }
 
@@ -24,14 +26,14 @@ export const NextButton = props => {
       return isDisabled ? { ...NextButton.styles.button, ...NextButton.styles.disabled } : NextButton.styles.button;
     }
 
-    if (currentStep === 'QUANTITY' || currentStep === 'CONTACT') {
+    if (currentStep === 'QUANTITY' || currentStep === 'CONTACT' || currentStep === 'BILLING') {
       return (
         <button 
           type="button" onClick={(e) => setNextStep(e, nextStep)} style={getNextButtonStyle()} disabled={isDisabled}>
         Next
         </button>        
       )
-    } else if (currentStep === 'BILLING') {
+    } else if (currentStep === 'REVIEW_ORDER') {
       return (
           <button onClick= {(e) => submitNewOrder(e)} style={getNextButtonStyle()} disabled={isDisabled}>Submit Order</button>
       );

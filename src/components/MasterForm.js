@@ -13,8 +13,8 @@ export const MasterForm = () => {
     const [ userInfo, setUserInfo ] = useState({"quantity": 1, "total": "49.99"});
     const [ currentStep, setCurrentStep ] = useState("QUANTITY");
     const [ formFields, setFormFields ] = useState([]);
-    const [ axiosResponse, setAxiosResponse ] = useState({})
     const [ errors, setErrors ] = useState([]);
+    const [ axiosResponse, setAxiosResponse ] = useState(null);
     const addressFields = ["street1", "street2", "city", "state", "zip"]
     const paymentFields = ["ccNum", "exp"];
 
@@ -87,7 +87,6 @@ export const MasterForm = () => {
                 payload[key] = userInfo[key]
             }
         });
-
           return payload;
     }
 
@@ -129,7 +128,6 @@ export const MasterForm = () => {
                 formFields={formFields} />
             <Confirmation
                 currentStep={currentStep}
-                axiosResponse={axiosResponse}
                 userInfo={userInfo}/>
             <div style={MasterForm.styles.buttonContainer}>
                 <PreviousButton

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart, faAddressBook, faCreditCard, faStar, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart, faAddressBook, faCreditCard, faClipboardCheck, faStar, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 export const Breadcrumbs = props => {
     const { currentStep } = props;
@@ -18,6 +18,8 @@ export const Breadcrumbs = props => {
           <FontAwesomeIcon icon={faAddressBook} size={getSize('CONTACT')}/>
           <FontAwesomeIcon icon={faChevronRight} size="xs"/>
           <FontAwesomeIcon icon={faCreditCard} size={getSize('BILLING')}/>
+          <FontAwesomeIcon icon={faChevronRight} size="xs"/>
+          <FontAwesomeIcon icon={faClipboardCheck} size={getSize('REVIEW_ORDER')}/>
           <FontAwesomeIcon icon={faChevronRight} size="xs"/>
           <FontAwesomeIcon icon={faStar} size={getSize('CONFIRMATION')}/>
           </div>
