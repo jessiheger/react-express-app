@@ -11,15 +11,14 @@ router.get('/all', routes.getUsers)
 
 router.get('/:id([0-9]+)', routes.getByUserId)
 
-router.post('/checkForUser', routes.getByContactInfo)
-
 router.post('/', routes.createUser)
+
+router.post('/checkForUser', routes.getByContactInfo)
 
 router.put('/', routes.updateFulfilled)
 
-router.delete('/:id([0-9]+)', routes.deleteUser)
-
 router.put('/reset', routes.resetUsers)
 
+router.delete('/:id([0-9]+)', routes.deleteUser)
 
 module.exports = router
