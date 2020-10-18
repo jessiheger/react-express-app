@@ -28,7 +28,7 @@ app.use(express.static("public"));
 app.use('/api/magic', apiRoutes)
 
 // Start express app
-app.listen(PORT, function() {
+app.listen(PORT, '0.0.0.0', function() {
   console.log(`Server is running on: ${PORT}`)
 })
 
