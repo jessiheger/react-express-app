@@ -20,7 +20,7 @@ const setPrev = (currentStep) => {
 export const PreviousButton = props => {
     const { currentStep, setPreviousStep } = props;
     const previousStep = setPrev(currentStep);
-    const buttonText = currentStep === 'CONFIRMATION' ? 'Submit New Order' : 'Previous';
+    const buttonText = currentStep === 'CONFIRMATION' || currentStep === 'MAX_QUANTITY_REACHED' || currentStep === 'WILL_EXCEED_MAX_QUANTITY'? 'Submit New Order' : 'Previous';
 
     if (currentStep !== 'QUANTITY') {
         return (

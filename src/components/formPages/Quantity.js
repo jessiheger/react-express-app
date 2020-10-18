@@ -10,11 +10,13 @@ export const Quantity = props => {
             setTotal((49.99 * quantity).toString());
     }, [quantity]);
 
+    useEffect(() => {
+        addToOrder("total", total)
+    }, [total])
 
     const onChange = (val) => {
-        setQuantity(val);
-        addToOrder("quantity", val);
-        addToOrder("total", total);
+        setQuantity(parseInt(val, 10));
+        addToOrder("quantity", parseInt(val, 10));
     }
 
     return (

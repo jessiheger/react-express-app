@@ -14,8 +14,11 @@ export const MasterForm = () => {
     const [ currentStep, setCurrentStep ] = useState("QUANTITY");
     const [ formFields, setFormFields ] = useState([]);
     const [ errors, setErrors ] = useState([]);
+    const [ quantityAlreadyOrdered, setQuantityAlreadyOrdered ] = useState(0);
     const addressFields = ["street1", "street2", "city", "state", "zip"]
     const paymentFields = ["ccNum", "exp"];
+
+    const MAX_ALLOWED = 3;
 
     useEffect (() => {
         switch (currentStep) {
@@ -50,11 +53,22 @@ export const MasterForm = () => {
                 if (res.data.data.length === 0) {
                     setCurrentStep(nextStep)
                 } else {
-                    setCurrentStep('DUPLICATE_USER');
+                    const userOrders = res.data.data;
+                    const numAlreadyOrdered = userOrders.reduce( function(cnt , order){ return cnt + order.quantity; }, 0)
+                    setQuantityAlreadyOrdered(numAlreadyOrdered);
+                    if (numAlreadyOrdered === MAX_ALLOWED) {
+                        setCurrentStep('MAX_QUANTITY_REACHED')
+                    }
+                    else if (numAlreadyOrdered + userInfo.quantity > MAX_ALLOWED) {
+                        setCurrentStep('WILL_EXCEED_MAX_QUANTITY')
+                    }
+                    else {
+                        setCurrentStep(nextStep);
+                    }
                 }
             }).catch(error => {
                 console.log(error);
-                setCurrentStep(nextStep);
+                setCurrentStep('ERROR');
             });
         }
         setCurrentStep(nextStep)
@@ -126,7 +140,8 @@ export const MasterForm = () => {
                 formFields={formFields} />
             <Confirmation
                 currentStep={currentStep}
-                userInfo={userInfo}/>
+                userInfo={userInfo}
+                quantityAlreadyOrdered={quantityAlreadyOrdered}/>
             <div style={MasterForm.styles.buttonContainer}>
                 <PreviousButton
                     currentStep={currentStep}

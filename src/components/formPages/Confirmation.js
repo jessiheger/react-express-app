@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const Confirmation = props => {
-    const { userInfo, currentStep } = props;
+    const { userInfo, currentStep, quantityAlreadyOrdered } = props;
 
     return (
         currentStep === 'CONFIRMATION' || currentStep === 'REVIEW_ORDER' ? 
@@ -41,11 +41,17 @@ export const Confirmation = props => {
             <h2>There was an error processing your order. Please try again.</h2>            
         </div>
 
-        : currentStep === 'DUPLICATE_USER' ?
+        : currentStep === 'MAX_QUANTITY_REACHED' ?
         <div>
-            <h2>So sorry! It looks like a user with the same name and contact information has already submitted an order.</h2>
+            <h2>Oops! It looks like a user with the same name and contact information has already reached the monthly limit of 3 magic potions.</h2>
+            <h3>Please wait until next month to submit another order. Thanks!</h3>
         </div>
-        
+
+        : currentStep === 'WILL_EXCEED_MAX_QUANTITY' ? 
+            <div>
+                <h2>Oops! You've already ordered {quantityAlreadyOrdered} potions this month, and your selected quantity of [{userInfo.quantity}] would exceed our current monthly limit.</h2>
+                <h3>Please submit a new order with a quantity selection of <span style={{fontWeight: 'bold'}}> [{3 - quantityAlreadyOrdered}</span>]. Thanks!</h3>
+            </div>
         : <div></div>
     )
 }
