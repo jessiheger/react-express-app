@@ -13,6 +13,15 @@ const knex = require('knex')({
   useNullAsDefault: true
 })
 
+// db Connection w/ Heroku
+// const db = require('knex')({
+//   client: 'pg',
+//   connection: {
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: true,
+//   }
+// });
+
 // Create a table in the database called "users"
 knex.schema
   // Make sure no "users" table exists

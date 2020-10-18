@@ -16,7 +16,7 @@ export const Breadcrumbs = props => {
             <div style={Breadcrumbs.styles.innerContainer}>
                 {breadcrumbIcons.map( (icon) => {
                     return (
-                        <div style={Breadcrumbs.styles.iconAndChevron}>
+                        <div key={icon.iconName} style={Breadcrumbs.styles.iconAndChevron}>
                             <FontAwesomeIcon icon={icon.iconName} size={getSize(icon.stepName)} />
                             {icon.hasNextStep ? <div style={{paddingLeft: '2rem'}}><FontAwesomeIcon icon={faChevronRight} size="xs"/></div> : <div></div>}
                         </div>
