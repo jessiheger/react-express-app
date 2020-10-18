@@ -114,6 +114,7 @@ export const MasterForm = () => {
   
     return (
       <div style={MasterForm.styles.container}>
+        <div style={MasterForm.styles.title}>Magic Potion Order</div>
         <Breadcrumbs currentStep={currentStep} />
         <form style={MasterForm.styles.form}>
             <Quantity 
@@ -143,10 +144,9 @@ export const MasterForm = () => {
 
   MasterForm.styles = {
       container: {
-          width: '100%',
-          minWidth: '400px',
+          width: '450px',
+        //   minWidth: '400px',
           fontFamily: 'larssiet, "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, Verdana, sans-serif',
-
       },
       form: {
         display: 'flex',
@@ -159,5 +159,12 @@ export const MasterForm = () => {
       buttonContainer: {
           display: 'flex',
           justifyContent: 'space-between',
+      },
+      title: {
+        fontFamily: '"Trebuchet MS", "sans-serif"',
+        fontSize: '2.5rem',
+        display: 'flex',
+        justifyContent: 'center',
+        marginBottom: '1.5rem',
       }
   }
