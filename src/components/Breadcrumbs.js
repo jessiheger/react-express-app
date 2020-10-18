@@ -18,13 +18,16 @@ export const Breadcrumbs = props => {
                     return (
                         <div style={Breadcrumbs.styles.iconAndChevron}>
                             <FontAwesomeIcon icon={icon.iconName} size={getSize(icon.stepName)} />
-                            {icon.hasNextStep ? <div style={{paddingLeft: '2rem'}}><FontAwesomeIcon icon={faChevronRight} size="xs"/></div> : <div></div>}
+                            {icon.hasNextStep 
+                                ? <div style={Breadcrumbs.styles.chevron}>
+                                    <FontAwesomeIcon icon={faChevronRight} size="xs"/>
+                                </div> 
+                                : <div></div>}
                         </div>
                     )
-                })
-                }
+                })}
            </div>
-          </div>
+        </div>
     )
 }
 
@@ -49,5 +52,8 @@ Breadcrumbs.styles = {
     iconAndChevron: {
         display: 'flex',
         alignItems: 'center',
+    },
+    chevron: {
+        paddingLeft: '3rem'
     }
 }
