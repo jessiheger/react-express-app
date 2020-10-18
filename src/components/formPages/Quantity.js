@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 
 export const Quantity = props => {
     const { currentStep, addToOrder } = props;
-    const [quantity, setQuantity ] = useState(1);
-    const [total, setTotal ] = useState("49.99");
+    const [quantity, setQuantity ] = useState("49.99");
+    const [total, setTotal ] = useState(1);
+
+    useEffect(() => {
+        setTotal("49.99");
+        setQuantity(1);
+    }, [currentStep])
 
     useEffect(() => {
             setTotal((49.99 * quantity).toString());
