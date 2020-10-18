@@ -1,19 +1,35 @@
-const express = require("express");
+const express = require('express')
+const bodyParser = require('body-parser')
+const compression = require('compression')
+const cors = require('cors')
+const helmet = require('helmet')
+const path = require('path');
+
+// Import routes
+const apiRoutes = require('./routes')
+
+const PORT = process.env.PORT || 8000
+
+
 const app = express(); // create express app
-const path = require("path");
 
 // add middlewear:
+app.use(cors())
+app.use(helmet())
+app.use(compression())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 //the build folder will be created inside react-app folder, we are creating a path for the build folder located outside the server folder.
 app.use(express.static(path.join(__dirname, "..", "build")));
 // informs Express.js to serve all the files from public folder
 app.use(express.static("public"));
 
-// in order to use routing:
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-});
+// Implement users route
+app.use('/api/magic', apiRoutes)
 
-// start express server on port 7000
-app.listen(7000, () => {
-  console.log("server started on port 7000");
-});
+// Start express app
+app.listen(PORT, function() {
+  console.log(`Server is running on: ${PORT}`)
+})
+
+module.exports = app;
