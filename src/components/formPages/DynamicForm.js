@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CustomInput } from './CustomInput';
+import { CustomInput } from './../CustomInput';
 
 export const DynamicForm = props => {
     const { addToOrder, formFields, removeFromErrorList } = props;

@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 
 import { BillingFields, ContactFields } from '../utils/formFields';
 import { Breadcrumbs } from './Breadcrumbs';
-import { Confirmation } from './Confirmation';
-import { DynamicForm } from "./DynamicForm";
+import { Confirmation } from './formPages/Confirmation';
+import { DynamicForm } from "./formPages/DynamicForm";
 import { NextButton } from './NextButton'
 import { PreviousButton } from './PreviousButton'
-import { Quantity } from './Quantity';
+import { Quantity } from './formPages/Quantity';
 
 export const MasterForm = () => {
     const [ userInfo, setUserInfo ] = useState({"quantity": 1, "total": "49.99"});

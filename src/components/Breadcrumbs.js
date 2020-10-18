@@ -54,6 +54,6 @@ Breadcrumbs.styles = {
         alignItems: 'center',
     },
     chevron: {
-        paddingLeft: '3rem'
+        paddingLeft: '2rem'
     }
 }
