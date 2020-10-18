@@ -1,19 +1,9 @@
 body {
-    font-size: 20px;
-  }
-  
-  .users {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .user {
-    padding: 2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .user > div {
-    margin-top: 1rem;
-    color: #ccc;
-  }
+  display: flex;
+  font-family: larssiet, "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, Verdana, sans-serif;
+  height: 100%;
+  width: 100%;
+  background-color: #F8F8FA;
+  color: rgb(51 46 84);
+  margin: 2rem;
+}
