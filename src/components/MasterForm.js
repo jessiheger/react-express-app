@@ -38,6 +38,8 @@ export const MasterForm = () => {
         formFields.forEach( field => field.required ? errors.push(field.name) : null);
         setErrors(errors);
     }, [formFields])
+
+    const clearUserInfo = () => setUserInfo({"quantity": 1, "total": "49.99"})
  
     const setPreviousStep = prevStep => setCurrentStep(prevStep);
     
@@ -145,6 +147,7 @@ export const MasterForm = () => {
             <div style={MasterForm.styles.buttonContainer}>
                 <PreviousButton
                     currentStep={currentStep}
+                    clearUserInfo={clearUserInfo}
                     setPreviousStep={setPreviousStep} />
                 <NextButton 
                     currentStep={currentStep}
