@@ -135,11 +135,13 @@ export const MasterForm = () => {
         <form style={MasterForm.styles.form}>
             <Quantity 
                 addToOrder={addToOrder}
-                currentStep={currentStep} />
+                currentStep={currentStep} 
+                userInfo={userInfo}/>
             <DynamicForm 
                 addToOrder={addToOrder} 
                 removeFromErrorList={removeFromErrorList}
-                formFields={formFields} />
+                formFields={formFields}
+                userInfo={userInfo} />
             <Confirmation
                 currentStep={currentStep}
                 userInfo={userInfo}

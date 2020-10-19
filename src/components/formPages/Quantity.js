@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 export const Quantity = props => {
-    const { currentStep, addToOrder } = props;
-    const [quantity, setQuantity ] = useState("49.99");
-    const [total, setTotal ] = useState(1);
+    const { currentStep, addToOrder, userInfo } = props;
+    const [quantity, setQuantity ] = useState(1);
+    const [total, setTotal ] = useState(userInfo.total);
 
     useEffect(() => {
-        setTotal("49.99");
-        setQuantity(1);
-    }, [currentStep])
+        setTotal(userInfo.total);
+        setQuantity(userInfo.quantity);
+    }, [userInfo])
 
     useEffect(() => {
             setTotal((49.99 * quantity).toString());

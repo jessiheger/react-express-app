@@ -23,12 +23,8 @@ export const PreviousButton = props => {
     const buttonText = currentStep === 'CONFIRMATION' || currentStep === 'MAX_QUANTITY_REACHED' || currentStep === 'WILL_EXCEED_MAX_QUANTITY'? 'Submit New Order' : 'Previous';
 
     const handleOnClick = () => {
-        if (currentStep === 'CONFIRMATION' || currentStep === 'MAX_QUANTITY_REACHED' || currentStep === 'WILL_EXCEED_MAX_QUANTITY') {
             clearUserInfo();
             setPreviousStep(previousStep);
-        } else {
-            setPreviousStep(previousStep);
-        }
     }
 
     if (currentStep !== 'QUANTITY') {
