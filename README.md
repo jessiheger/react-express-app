@@ -12,8 +12,8 @@
 ##### Troubleshooting:
 - If you are having trouble, try opening it in incognito mode!
 
-###### Heroku site that is having build issues: 
-[Heroku site (not yet working, see #7 below)](https://guarded-atoll-30948.herokuapp.com/)
+##### Heroku site that is having routing issues: 
+[Heroku site (not yet fully working, see #7 below)](https://guarded-atoll-30948.herokuapp.com/)
 
 
 
@@ -107,7 +107,7 @@ I initially chose SQLite because it is fast and easy to spin up for an Express a
 
 #### 7. With more time or in a different environment, what would I do differently?
 - Use a different relational database (like postgreSQL, for example). I ran into connection issues when attempting to deploy my app to Heroku, and my Googling led me to the conclusion that Heroku does not support SQLite (something I should have checked before choosing this database option). Heroku advises that you provision a PostgreSQL database in order to get around this issue, but lack of time and experience with PostgreSQL prevented me from doing so successfully.
-	- In light of my SQLite challenges, I created a new branch of my app repo and transitioned to a provisioned Heroku PostgreSQL database. You can see that branch here: [App-With-PostgreSQL](https://github.com/jessiheger/react-express-app/tree/add-postresql). Sadly even after I got my routes working and updating to my Heroku database, the Heroku deployment does not build successfully.
+	- In light of my SQLite challenges, I created a new branch of my app repo and transitioned to a provisioned Heroku PostgreSQL database. You can see that branch here: [App-With-PostgreSQL](https://github.com/jessiheger/react-express-app/tree/add-postresql). I'm still having trouble connecting with the server, but it does render!
 - Make use of orderDate to allow a user to purchase 3 more potions _if_ it had been a month since they hit the monthly quantity limit. 
 - Schema changes
 	- Rather than having a single schema that captures all order information, I would create five schemas: User, Order, Product, Shipping, and Billing. As a result, a user would be able to submit orders with various shipping addresses and payment types (including billing addresses) - which more accurately represents the way check-out forms work today. In addition, separating schemas allows for updates to individual parts of a user's account or order, as well as the ability to look up an entire user's history of orders and the contents within them.
