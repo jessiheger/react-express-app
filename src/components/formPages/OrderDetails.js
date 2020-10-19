@@ -19,7 +19,7 @@ export const OrderDetails = props => {
 
             <h3>Payment Details:</h3>
             <div style={OrderDetails.styles.singleIndent}>Credit Card: -{userInfo.ccNum.substr(userInfo.ccNum.length - 4)}</div>
-            <div style={OrderDetails.styles.singleIndent}>Exp: {userInfo.exp}</div>
+            <div style={OrderDetails.styles.singleIndent}>Exp: {userInfo.expiration}</div>
         </div> 
     )
 }

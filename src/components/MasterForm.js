@@ -16,7 +16,7 @@ export const MasterForm = () => {
     const [ errors, setErrors ] = useState([]);
     const [ quantityAlreadyOrdered, setQuantityAlreadyOrdered ] = useState(0);
     const addressFields = ["street1", "street2", "city", "state", "zip"]
-    const paymentFields = ["ccNum", "exp"];
+    const paymentFields = ["ccNum", "expiration"];
 
     const MAX_ALLOWED = 3;
 
