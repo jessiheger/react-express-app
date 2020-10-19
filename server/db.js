@@ -1,18 +1,28 @@
 // Import path module
 const path = require('path')
 
-const { Pool } = require('pg')
+const { Pool, Client } = require('pg')
 
 // Get the location of database.sqlite file
 const dbPath = path.resolve(__dirname, 'db/database.sqlite')
 
 
+// const pool = new Pool({
+//   user: 'Jessica',
+//   host: 'localhost',
+//   database: 'magic-postion-orders',
+//   password: '',
+//   post: 5432
+// })
+
+
+
 const pool = new Pool({
-  user: 'Jessica',
-  host: 'psql',
-  database: 'magic-postion-orders',
-  password: '',
-  post: 5432
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+
 })
 
 module.exports = pool

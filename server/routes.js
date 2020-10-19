@@ -9,6 +9,7 @@ const router = express.Router()
 
 var pool = require('./db')
 
+
 // router.get('/all', routes.getUsers)
 
 // router.get('/:id([0-9]+)', routes.getByUserId)
@@ -46,6 +47,34 @@ router.post('/', (req, res, next) => {
             res.json(q_res.rows)
       })
   })
+  
+  // Get single user by contact info
+router.post('/checkForUser', (req, res) => {
+    const values = [ 
+      req.body.firstName,
+      req.body.lastName,
+      req.body.email,
+      req.body.street1,
+      req.body.street2 ? req.body.street2 : '',
+      req.body.city,
+      req.body.state,
+      req.body.zip,
+      req.body.phone
+    ]
+    pool.query(`SELECT * FROM potionorder WHERE firstname = $1 AND lastname = $2')`,
+          values, (q_err, q_res) => {
+        if(q_err) return res.json(q_err);
+        res.json(q_res.rows)
+        })
+      })
+      
+// router.get('/all', (req, res) => {
+//     pool.query(`SELECT * FROM potionorder`,
+//     (q_err, q_res) => {
+//         if(q_err) return res.send(q_err);
+//         res.json(q_res.rows)
+//     })
+// })
   
 
 module.exports = router
