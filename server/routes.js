@@ -23,10 +23,6 @@ var pool = require('./db')
 
 // router.delete('/:id([0-9]+)', routes.deleteUser)
 
-router.get('/hello', (req, res) => {
-	res.json('hello world')
-})
-
 router.post('/', (req, res, next) => {
     const values = [ 
         req.body.firstName,

@@ -9,7 +9,7 @@ const dbPath = path.resolve(__dirname, 'db/database.sqlite')
 
 const pool = new Pool({
   user: 'Jessica',
-  host: 'localhost',
+  host: 'psql',
   database: 'magic-postion-orders',
   password: '',
   post: 5432
