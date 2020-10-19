@@ -78,7 +78,6 @@ router.post('/', (req, res, next) => {
       })
   })
   
-// NEED TO FIX
 router.post('/checkForUser', (req, res) => {
     const values = [ 
       req.body.firstName,
