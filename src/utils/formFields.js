@@ -84,7 +84,7 @@ export const BillingFields = [
     },
     {
         label: 'Expiration (MM/YY)',
-        name: 'exp',
+        name: 'expiration',
         placeholder: '03/25',
         required: true,
         validation: /^((0[1-9])|(1[0-2]))\/(\d{2})$/,

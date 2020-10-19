@@ -52,10 +52,10 @@ export const MasterForm = () => {
                 data: userInfo
             })
             .then( res => {
-                if (res.data.data.length === 0) {
+                if (res.data.length === 0) {
                     setCurrentStep(nextStep)
                 } else {
-                    const userOrders = res.data.data;
+                    const userOrders = res.data;
                     const numAlreadyOrdered = userOrders.reduce( function(cnt , order){ return cnt + order.quantity; }, 0)
                     setQuantityAlreadyOrdered(numAlreadyOrdered);
                     if (numAlreadyOrdered === MAX_ALLOWED) {

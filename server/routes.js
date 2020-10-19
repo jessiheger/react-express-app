@@ -54,14 +54,14 @@ router.post('/', (req, res, next) => {
         req.body.firstName,
         req.body.lastName,
         req.body.email,
-        req.body.street1,
-        req.body.street2 ? req.body.street2 : '',
-        req.body.city,
-        req.body.state,
-        req.body.zip,
+        req.body.address.street1,
+        req.body.address.street2 ? req.body.address.street2 : '',
+        req.body.address.city,
+        req.body.address.state,
+        req.body.address.zip,
         req.body.phone,
-        req.body.ccNum,
-        req.body.expiration,
+        req.body.payment.ccNum,
+        req.body.payment.expiration,
         req.body.quantity,
         req.body.total
                     ]
@@ -89,7 +89,7 @@ router.post('/checkForUser', (req, res) => {
     pool.query(`SELECT * FROM potionorder WHERE firstname = $1 AND lastname = $2 AND email = $3 AND phone = $4`,
           values, (q_err, q_res) => {
         if(q_err) return res.json(q_err);
-        res.json(q_res)
+        res.json(q_res.rows)
         })
       })
       
