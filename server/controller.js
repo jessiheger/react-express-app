@@ -128,53 +128,34 @@
 //     })
 // }
 
-var express = require('express')
-var router = express.Router()
-var pool = require('./db')
-
-function updateProductByID (id, cols) {
-  // Setup static beginning of query
-  var query = ['UPDATE products'];
-  query.push('SET');
-
-  // Create another array storing each set command
-  // and assigning a number value for parameterized query
-  var set = [];
-  Object.keys(cols).forEach(function (key, i) {
-    set.push(key + ' = ($' + (i + 1) + ')'); 
-  });
-  query.push(set.join(', '));
-
-  // Add the WHERE statement to look up by id
-  query.push('WHERE pr_id = ' + id );
-
-  // Return a complete query string
-  return query.join(' ');
-}
+// var express = require('express')
+// var router = express.Router()
+// var pool = require('./db')
 
 
-router.post('/', (req, res, next) => {
-  const values = [ 
-      req.body.firstName,
-      req.body.lastName,
-      req.body.email,
-      req.body.address.street1,
-      req.body.address.street2 ? req.body.address.street2 : '',
-      req.body.address.city,
-      req.body.address.state,
-      req.body.address.zip,
-      req.body.phone,
-      req.body.payment.ccNum,
-      req.body.payment.expiration,
-      req.body.quantity,
-      req.body.total
-                  ]
-  pool.query(`INSERT INTO potionorder(firstname, lastname, email, street1, street2, city, state, zip, phone, quantity, total, ccnum, expiration, fulfilled, orerdate)
-              VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW() , false)`,
-           values, (q_err, q_res) => {
-          if(q_err) return next(q_err);
-          res.json(q_res.rows)
-    })
-})
+
+// router.post('/', (req, res, next) => {
+//   const values = [ 
+//       req.body.firstName,
+//       req.body.lastName,
+//       req.body.email,
+//       req.body.address.street1,
+//       req.body.address.street2 ? req.body.address.street2 : '',
+//       req.body.address.city,
+//       req.body.address.state,
+//       req.body.address.zip,
+//       req.body.phone,
+//       req.body.payment.ccNum,
+//       req.body.payment.expiration,
+//       req.body.quantity,
+//       req.body.total
+//                   ]
+//   pool.query(`INSERT INTO potionorder(firstname, lastname, email, street1, street2, city, state, zip, phone, quantity, total, ccnum, expiration, fulfilled, orerdate)
+//               VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW() , false)`,
+//            values, (q_err, q_res) => {
+//           if(q_err) return next(q_err);
+//           res.json(q_res.rows)
+//     })
+// })
 
 // module.exports = router
